@@ -2,4 +2,7 @@
 class PostsController < ApplicationController
     def index
     end
-end
+    def new
+    end
+ @post = Post.new
+    end
