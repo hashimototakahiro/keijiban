@@ -2,11 +2,12 @@
     class PostsController < ApplicationController
     def index
         # 投稿データを全て取得、またインスタンス変数なのでViewで参照可能
-
+        
     end
 
     def new
         # Postモデルのオブジェクトを作成
+
         # @boardはインスタンス変数で、Viewで参照可能
 
     end

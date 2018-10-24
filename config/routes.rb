@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'posts' => 'posts#index'
 
-  get 'posts/new' => 'posts/new#index'
+  resources:posts
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_scope :social_account do
