@@ -2,12 +2,12 @@ class PostsNewController < PostsController
 
   def index
       # 投稿データを全て取得、またインスタンス変数なのでViewで参照可能
-
+ 　　@post = Post.new
   end
 
   def new
       # Postモデルのオブジェクトを作成
-    @post = Post.new
+  　  @post = Post.new
       # @boardはインスタンス変数で、Viewで参照可能
 
   end

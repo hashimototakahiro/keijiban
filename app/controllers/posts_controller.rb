@@ -2,15 +2,20 @@
     class PostsController < ApplicationController
     def index
         # 投稿データを全て取得、またインスタンス変数なのでViewで参照可能
-        
+
     end
+
 
     def new
         # Postモデルのオブジェクトを作成
-
-        # @boardはインスタンス変数で、Viewで参照可能
+       @post = Post.new
 
     end
+        # @boardはインスタンス変数で、Viewで参照可能
+    def show
+        @post = Post.find(params[:id])
+    end
+
 
     def create
         # データはparamsという変数に渡されてくる
@@ -23,10 +28,10 @@
 
     end
 
-    private
+
 
     # paramsから欲しいデータのみ抽出
     def post_params
-        params.require(:post).permit(:name, :title, :content)
+        params.require(:posts).permit(:name, :title, :content)
     end
 end
