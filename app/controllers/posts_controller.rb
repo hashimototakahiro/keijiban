@@ -2,8 +2,10 @@
     class PostsController < ApplicationController
     def index
         # 投稿データを全て取得、またインスタンス変数なのでViewで参照可能
-
     end
+    
+    end
+
 
 
     def new
