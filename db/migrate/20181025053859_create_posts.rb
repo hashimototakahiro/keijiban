@@ -1,10 +1,9 @@
 class CreatePosts < ActiveRecord::Migration[5.2]
-  def change
+  create_table :posts do |t|
+     t.string :name
+     t.text :title
+     t.text :content
+     t.timestamps
 
-
-      t.timestamps
-    add_column :posts, :name, :string, null: false, default: ""
-    add_column :posts, :age, :integer
-    end
-  end
-end
+   end
+ end
