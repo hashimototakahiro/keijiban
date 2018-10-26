@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     # 投稿ページを表示
     post 'posts/new', to: 'posts#new'
 
+    post 'posts', to: 'posts#create'
+
 
 
 end

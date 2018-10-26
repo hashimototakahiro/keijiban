@@ -3,7 +3,7 @@
     def index
         # 投稿データを全て取得、またインスタンス変数なのでViewで参照可能
     end
-    
+
     end
 
 
@@ -36,4 +36,3 @@
     def post_params
         params.require(:posts).permit(:name, :title, :content)
     end
-end
