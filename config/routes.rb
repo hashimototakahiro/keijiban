@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   get 'posts' => 'posts#index'
 
-  resources:posts
+  resources :posts, only: [:index, :new, :create, :show, :edit, :update]
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_scope :social_account do
@@ -31,6 +32,11 @@ Rails.application.routes.draw do
 
     post 'posts', to: 'posts#create'
 
+    post "posts/creat" => "posts#creat"
 
+    get "posts/:id" => "posts#show"
 
+    get "posts/:id" => "posts#show"
+
+post 'posts/create' => 'post#create', as: :post_create
 end

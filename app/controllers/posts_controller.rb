@@ -2,9 +2,11 @@
     class PostsController < ApplicationController
     def index
         # 投稿データを全て取得、またインスタンス変数なのでViewで参照可能
-    end
+        @posts = Post.all
 
     end
+
+
 
 
 
@@ -15,13 +17,14 @@
     end
         # @boardはインスタンス変数で、Viewで参照可能
     def show
-        @post = Post.find(params[:id])
+        @post = Post.find_by(params[:id])
     end
 
 
     def create
-        # データはparamsという変数に渡されてくる
-        # create は、Postモデルのクラスメソッド
+      @post = Post.new(content:params[:content])
+      @post.save
+
 
     end
 
@@ -29,10 +32,21 @@
     def open
 
     end
+    def edit
+        @post = Post.find(params[:id])
+    end
+    def update
+        @post = Post.find(params[:id])
+        # モデルの更新は、クラスメソッドのupdateメソッドで行える
+        Post.update_attributes(posts_params)
 
+        # リダイレクト処理
+        redirect_to "/posts/edit"
+    end
 
 
     # paramsから欲しいデータのみ抽出
-    def post_params
-        params.require(:posts).permit(:name, :title, :content)
+    def posts_params
+        params. require(:posts).permit(:name)
     end
+end
