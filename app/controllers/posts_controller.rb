@@ -17,13 +17,16 @@
     end
         # @boardはインスタンス変数で、Viewで参照可能
     def show
-        @post = Post.find_by(params[:id])
+        @post = Post.all
+
     end
 
 
     def create
-      @post = Post.new(content:params[:content])
+
+      @post = Post.new(content: params[:post][:content], title: params[:post][:title],name: params[:post][:name])
       @post.save
+      redirect_to "/posts"
 
 
     end
@@ -36,13 +39,14 @@
         @post = Post.find(params[:id])
     end
     def update
-        @post = Post.find(params[:id])
-        # モデルの更新は、クラスメソッドのupdateメソッドで行える
-        Post.update_attributes(posts_params)
+      @post = Post.find(params[:id])
 
-        # リダイレクト処理
-        redirect_to "/posts/edit"
-    end
+       if @post.update(article_params)
+          redirect_to @post
+       else
+          render 'edit'
+       end
+     end
 
 
     # paramsから欲しいデータのみ抽出

@@ -1,33 +1,30 @@
-<div class="d-flex align-items-center">
-  <h1>編集</h1>
-  <div class="ml-auto posts_button">
-      <%= link_to '投稿一覧', posts_path, class: 'btn btn-outline-info' %>
+<h1>Edit article</h1>
+
+<%= form_with(model: @post, local: true) do |form| %>
+  <% if @article.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited
+      this article from being saved:</h2>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
-</div>
-<%= form_for @post do |f| %>
-    <div class="form-group">
-        <%= f.label :name, '投稿者名' %>
-        <%= f.text_field :name, class: 'form-control' %>
-        <small id="poster-tip" class="form-text text-muted">
-            あなたの名前を入力してください。
-        </small>
-    </div>
-    <div class="form-group">
-        <%= f.label :title, '投稿タイトル' %>
-        <%= f.text_field :title, class: 'form-control' %>
-        <small id="title-tip" class="form-text text-muted">
-            タイトルを入力してください。
-        </small>
-    </div>
-    <div class="form-group">
-        <%= f.label :content, '投稿内容' %>
-        <%= f.text_area :content, class: 'form-control', rows:10 %>
-        <small id=content-tip" class="form-text text-muted">
-            投稿内容を入力してください。
-        </small>
-    </div>
-    <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
-    <small id="submit-tip" class="form-text text-muted">
-        投稿する前に投稿内容を見直してください!
-    </small>
+  <% end %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
 <% end %>
+
+<%= link_to 'Back', posts_path %>
