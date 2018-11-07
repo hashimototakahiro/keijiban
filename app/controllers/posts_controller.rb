@@ -41,16 +41,17 @@
     def update
       @post = Post.find(params[:id])
 
-       if @post.update(article_params)
+       if @post
           redirect_to @post
        else
           render 'edit'
        end
-     end
+
 
 
     # paramsから欲しいデータのみ抽出
     def posts_params
         params. require(:posts).permit(:name)
     end
+end
 end
